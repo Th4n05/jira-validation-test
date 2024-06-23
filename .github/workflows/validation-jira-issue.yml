@@ -8,7 +8,7 @@ on:
 
 jobs:
   ValidatePR:
-    runs-on: self-hosted-runners-dev
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout from repository
         uses: actions/checkout@v4
@@ -88,4 +88,4 @@ jobs:
         if: ${{steps.set-success.conclusion == 'success'}}
         uses: sozo-design/curl@v1.0.2
         with:
-          args: -k -H "Content-Type:application/json" -X POST --data @"./pr.json" -u "${{ secrets.JIRA_USER }}:${{ secrets.JIRA_PASSWORD }}" https://${{JIRA_URL}}/rest/api/2/issue/${{steps.extract-key.outputs.issue_key}}/comment
+          args: -k -H "Content-Type:application/json" -X POST --data @"./pr.json" -u "${{ secrets.JIRA_USER }}:${{ secrets.JIRA_PASSWORD }}" https://${{secrets.JIRA_URL}}/rest/api/2/issue/${{steps.extract-key.outputs.issue_key}}/comment
