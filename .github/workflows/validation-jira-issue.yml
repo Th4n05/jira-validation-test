@@ -8,7 +8,7 @@ on:
 
 jobs:
   ValidatePR:
-    runs-on: self-hosted-runners-dev
+    runs-on: ubuntu
     steps:
       - name: Checkout from repository
         uses: actions/checkout@v4
